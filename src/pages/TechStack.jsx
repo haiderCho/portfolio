@@ -2,7 +2,13 @@ import { techStack, workspaceInfo } from '../data/techStack';
 import { FaDesktop, FaMemory, FaWindows } from 'react-icons/fa';
 import { SiIntel, SiNvidia } from 'react-icons/si';
 
-
+const proficiencyClass = (level) => {
+  switch (level) {
+    case 'Expert': return 'prof-expert';
+    case 'Advanced': return 'prof-advanced';
+    default: return 'prof-intermediate';
+  }
+};
 
 export default function TechStack() {
   return (
@@ -14,45 +20,58 @@ export default function TechStack() {
         Bridging the gap between research and production with a focus on the full ML lifecycle.
       </p>
 
-      <div className="tech-stack-container">
+      <div className="ts-container">
         {techStack.map((category, idx) => (
-          <div key={idx} className="tech-category">
-            <h3 className="category-title">{category.category}</h3>
-            <div className="tech-grid">
+          <section key={idx} className="ts-section">
+            <div className="ts-section-header">
+              <span className="ts-section-num">{String(idx + 1).padStart(2, '0')}</span>
+              <div className="ts-section-text">
+                <h3 className="ts-section-title">{category.category}</h3>
+                {category.description && (
+                  <p className="ts-section-desc">{category.description}</p>
+                )}
+              </div>
+            </div>
+
+            <div className="ts-skills">
               {category.skills.map((skill, sIdx) => (
-                <div 
-                  key={sIdx} 
-                  className={`tech-card ${skill.isAI ? 'is-ai' : ''}`}
+                <div
+                  key={sIdx}
+                  className={`ts-skill-row ${skill.isAI ? 'ts-ai' : ''}`}
+                  style={{ animationDelay: `${sIdx * 60}ms` }}
                 >
-                  <div className="tech-icon-wrapper">
-                    <skill.icon className="tech-icon" />
+                  <div className="ts-skill-icon">
+                    <skill.icon />
                   </div>
-                  <span className="tech-name">{skill.name}</span>
-                  
-                  {/* Hover Details Card */}
-                  <div className="tech-details-overlay">
-                    <div className="details-header">
-                      <span className="details-proficiency">{skill.proficiency}</span>
-                      <span className="details-exp">{skill.experience}</span>
+
+                  <div className="ts-skill-body">
+                    <div className="ts-skill-top">
+                      <span className="ts-skill-name">{skill.name}</span>
+                      <span className={`ts-prof-badge ${proficiencyClass(skill.proficiency)}`}>
+                        {skill.proficiency}
+                      </span>
+                      <span className="ts-skill-exp">{skill.experience}</span>
                     </div>
-                    <div className="details-divider" />
-                    <div className="details-libraries">
-                      {skill.libraries.map((lib, lIdx) => (
-                        <span key={lIdx} className="lib-tag">{lib}</span>
+                    <div className="ts-skill-tags">
+                      {skill.tags.map((tag, tIdx) => (
+                        <span key={tIdx} className="ts-tag">{tag}</span>
                       ))}
                     </div>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         ))}
 
         {/* Workspace Section */}
-        <div className="workspace-section">
-          <div className="workspace-header">
-            <FaDesktop />
-            <h3>Current Workspace</h3>
+        <section className="ts-workspace">
+          <div className="ts-section-header">
+            <FaDesktop className="ts-workspace-icon" />
+            <div className="ts-section-text">
+              <h3 className="ts-section-title">Current Workspace</h3>
+              <p className="ts-section-desc">Primary development environment specs.</p>
+            </div>
           </div>
           <div className="workspace-grid">
             <div className="workspace-item">
@@ -83,11 +102,9 @@ export default function TechStack() {
                 <span className="workspace-item-value">{workspaceInfo.gpu}</span>
               </div>
             </div>
-
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
 }
-

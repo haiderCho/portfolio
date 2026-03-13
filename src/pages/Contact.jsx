@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { contactInfo } from '../data/contactInfo';
 
 // Custom Marker Icon
@@ -13,16 +14,31 @@ const customIcon = new L.Icon({
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [fileName, setFileName] = useState('');
+  const fileInputRef = useRef(null);
   const position = [23.8103, 90.4125]; // Dhaka
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+    setFileName('');
     setTimeout(() => setSubmitted(false), 3000);
   };
 
-  const qrColor = contactInfo.themeColors.primary;
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=mailto:${contactInfo.email}&bgcolor=ffffff&color=${qrColor}`;
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFileName(file.name);
+    }
+  };
+
+  const removeFile = () => {
+    setFileName('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  const { data, size, bgColor, fgColor } = contactInfo.qr;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(data)}&bgcolor=${bgColor}&color=${fgColor}`;
 
   return (
     <div className="page contact-page-v2">
@@ -60,9 +76,6 @@ export default function Contact() {
 
       {/* Contact Details Box */}
       <div className="contact-box contact-details-box">
-        <div className="contact-box-header">
-          <h3>Contact Details</h3>
-        </div>
         <div className="contact-box-content">
           <div className="contact-info-items">
             <div className="contact-info-item-row">
@@ -85,9 +98,9 @@ export default function Contact() {
             </div>
           </div>
           <div className="contact-qr-wrapper">
-            <div className="qr-container-v2">
+            <div className="qr-card">
               <img src={qrUrl} alt="Contact QR" />
-              <div className="qr-logo-overlay">N</div>
+              <div className="qr-logo-overlay">{contactInfo.qr.logoLetter}</div>
             </div>
           </div>
         </div>
@@ -95,9 +108,6 @@ export default function Contact() {
 
       {/* Contact Form Box */}
       <div className="contact-box contact-form-box">
-        <div className="contact-box-header">
-          <h3>Contact Form</h3>
-        </div>
         <form onSubmit={handleSubmit} className="contact-form-v2">
           <div className="form-grid-v2">
             <input type="text" placeholder="Full Name" required className="form-input-v2" />
@@ -106,10 +116,25 @@ export default function Contact() {
           <textarea placeholder="Your Message" required className="form-textarea-v2"></textarea>
           
           <div className="form-footer-v2">
-            <button type="button" className="attach-button">
-              <svg viewBox="0 0 24 24" className="icon-sm" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
-              Attach PDF (Optional)
-            </button>
+            <div className="attach-area">
+              <input
+                type="file"
+                ref={fileInputRef}
+                accept=".pdf"
+                onChange={handleFileChange}
+                style={{ display: 'none' }}
+              />
+              <button type="button" className="attach-button" onClick={() => fileInputRef.current?.click()}>
+                <svg viewBox="0 0 24 24" className="icon-sm" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+                {fileName ? 'Change PDF' : 'Attach PDF (Optional)'}
+              </button>
+              {fileName && (
+                <span className="attached-file">
+                  {fileName}
+                  <button type="button" className="remove-file" onClick={removeFile}>×</button>
+                </span>
+              )}
+            </div>
             <div className="form-submit-wrapper">
               {submitted ? (
                 <span className="success-msg">Message Sent!</span>

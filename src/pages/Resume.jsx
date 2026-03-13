@@ -1,4 +1,6 @@
 import { contactInfo } from '../data/contactInfo';
+import { resumeData } from '../data/resumeData';
+import SectionHeading from '../components/SectionHeading';
 
 export default function Resume() {
   return (
@@ -7,124 +9,87 @@ export default function Resume() {
       <div className="page-underline" />
 
       {/* Experience */}
-      <div className="section-heading">
-        <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-          <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-        </svg>
-        Experience
-      </div>
+      <SectionHeading 
+        title="Experience" 
+        icon={
+          <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+            <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+          </svg>
+        }
+      />
 
       <div className="timeline" style={{ marginTop: 16 }}>
-        <div className="timeline-item">
-          <div className="timeline-dot" />
-          <div className="timeline-title">Machine Learning Engineer</div>
-          <div className="timeline-company">{contactInfo.company} · Full-time · Hybrid</div>
-          <div className="timeline-date">May 2025 — Present</div>
-          <div className="timeline-desc">
-            MLOps & Model Deployment: Built automated training pipelines with CI/CD, 
-            implemented model monitoring and drift detection, and deployed ML systems at 
-            cloud scale.
+        {resumeData.experience.map((job, idx) => (
+          <div key={idx} className="timeline-item">
+            <div className="timeline-dot" />
+            <div className="timeline-title">{job.title}</div>
+            <div className="timeline-company">{job.company}{job.type ? ` · ${job.type}` : ''}</div>
+            <div className="timeline-date">{job.date}</div>
+            <div className="timeline-desc">{job.description}</div>
           </div>
-        </div>
-
-        <div className="timeline-item">
-          <div className="timeline-dot" />
-          <div className="timeline-title">Junior Software Engineer</div>
-          <div className="timeline-company">{contactInfo.company} · Full-time · Hybrid</div>
-          <div className="timeline-date">Sep 2024 — Apr 2025</div>
-          <div className="timeline-desc">
-            Full-Stack Development (CRM System): Developed backend APIs, database schemas, 
-            and frontend integrations; implemented authentication and handled deployment for 
-            internal and customer-facing CRM platform.
-          </div>
-        </div>
-
-        <div className="timeline-item">
-          <div className="timeline-dot" />
-          <div className="timeline-title">Data Scientist</div>
-          <div className="timeline-company">Internship · On-site</div>
-          <div className="timeline-date">Mar 2024 — Aug 2024</div>
-          <div className="timeline-desc">
-            Data Cleaning & Preprocessing, NumPy, statistical analysis, and building 
-            data pipelines for ML model training.
-          </div>
-        </div>
-
-        <div className="timeline-item">
-          <div className="timeline-dot" />
-          <div className="timeline-title">User Interface Designer</div>
-          <div className="timeline-company">Samurai System Ltd. · Freelance</div>
-          <div className="timeline-date">2017 — 2020</div>
-          <div className="timeline-desc">
-            Figma-based UI design, user interface prototyping, and design handoff 
-            for web and mobile applications.
-          </div>
-        </div>
+        ))}
       </div>
 
       {/* Education */}
-      <div className="section-heading" style={{ marginTop: 36 }}>
-        <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-          <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
-        </svg>
-        Education
-      </div>
+      <SectionHeading 
+        title="Education" 
+        style={{ marginTop: 36 }}
+        icon={
+          <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+            <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
+          </svg>
+        }
+      />
 
       <div className="timeline" style={{ marginTop: 16 }}>
-        <div className="timeline-item">
-          <div className="timeline-dot" />
-          <div className="timeline-title">B.Sc. in Computer Science & Engineering</div>
-          <div className="timeline-company">North South University, Dhaka, Bangladesh</div>
-        </div>
-
-        <div className="timeline-item">
-          <div className="timeline-dot" />
-          <div className="timeline-title">Higher Secondary Certificate (HSC)</div>
-          <div className="timeline-company">Birshreshtha Noor Mohammad Public College</div>
-        </div>
-
-        <div className="timeline-item">
-          <div className="timeline-dot" />
-          <div className="timeline-title">Secondary School Certificate (SSC)</div>
-          <div className="timeline-company">Birshreshtha Noor Mohammad Public College</div>
-        </div>
+        {resumeData.education.map((edu, idx) => (
+          <div key={idx} className="timeline-item">
+            <div className="timeline-dot" />
+            <div className="timeline-title">{edu.title}</div>
+            <div className="timeline-company">{edu.company}</div>
+          </div>
+        ))}
       </div>
 
       {/* Skills & Languages Grid */}
       <div className="resume-grid" style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40 }}>
         {/* Technical Mastery */}
         <div className="skills-section">
-          <div className="section-heading" style={{ marginBottom: 20 }}>
-            <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-            Technical Mastery
-          </div>
-          <SkillBar name="AI & Machine Learning" percent={85} />
-          <SkillBar name="Full-Stack Systems" percent={78} />
-          <SkillBar name="Cloud & MLOps" percent={72} />
-          <SkillBar name="Software Architecture" percent={75} />
-          <SkillBar name="Database Design" percent={70} />
+          <SectionHeading 
+            title="Technical Mastery" 
+            style={{ marginBottom: 20 }}
+            icon={
+              <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            }
+          />
+          {resumeData.skillsRow1.map((skill, idx) => (
+            <SkillBar key={idx} name={skill.name} percent={skill.percent} />
+          ))}
         </div>
 
         {/* Language Proficiency */}
         <div className="languages-section">
-          <div className="section-heading" style={{ marginBottom: 20 }}>
-            <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="2" y1="12" x2="22" y2="12" />
-              <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-            </svg>
-            Language Proficiency
-          </div>
+          <SectionHeading 
+            title="Language Proficiency" 
+            style={{ marginBottom: 20 }}
+            icon={
+              <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+              </svg>
+            }
+          />
           
           <div className="language-grid" style={{ display: 'grid', gap: 12 }}>
-            <LanguageItem language="Bangla" level="Native Speaker" percent={100} />
-            <LanguageItem language="English" level="Advanced / Fluid" percent={90} />
-            <LanguageItem language="Japanese" level="Beginner (N5 Level)" percent={25} />
+            {resumeData.skillsRow2.map((lang, idx) => (
+              <LanguageItem key={idx} language={lang.language} level={lang.level} percent={lang.percent} />
+            ))}
           </div>
         </div>
       </div>

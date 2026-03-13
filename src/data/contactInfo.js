@@ -22,5 +22,12 @@ export const contactInfo = {
     primary: "9d7cd8",
     accent: "ff9e64",
     text: "dcd7e8"
+  },
+  qr: {
+    data: "mailto:nafizhc@gmail.com",  // Change this to any URL or text
+    size: 150,
+    bgColor: "0b0a0f",
+    fgColor: "9d7cd8",
+    logoLetter: "N"
   }
 };
