@@ -6,6 +6,9 @@ const proficiencyClass = (level) => {
   switch (level) {
     case 'Expert': return 'prof-expert';
     case 'Advanced': return 'prof-advanced';
+    case 'Intermediate': return 'prof-intermediate';
+    case 'Beginner': return 'prof-beginner';
+    case 'Novice': return 'prof-novice';
     default: return 'prof-intermediate';
   }
 };

@@ -45,14 +45,14 @@ export const resumeData = {
   ],
   skillsRow1: [
     { name: "AI & Machine Learning", percent: 85 },
-    { name: "Full-Stack Systems", percent: 78 },
-    { name: "Cloud & MLOps", percent: 72 },
-    { name: "Software Architecture", percent: 75 },
-    { name: "Database Design", percent: 70 }
+    { name: "Full-Stack Systems", percent: 70 },
+    { name: "Cloud & MLOps", percent: 65 },
+    { name: "Software Architecture", percent: 70 },
+    { name: "Database Design", percent: 65 }
   ],
   skillsRow2: [
     { language: "Bangla", level: "Native Speaker", percent: 100 },
-    { language: "English", level: "Advanced / Fluid", percent: 90 },
-    { language: "Japanese", level: "Beginner (N5 Level)", percent: 25 }
+    { language: "English", level: "Advanced / Fluid", percent: 85 },
+    { language: "Japanese", level: "Beginner (N5 Level)", percent:33 }
   ]
 };

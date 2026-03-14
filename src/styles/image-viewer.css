@@ -1,0 +1,188 @@
+/* Image Viewer (Portal) Styles */
+
+.iv-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  animation: galleryFadeIn 250ms ease;
+  user-select: none;
+}
+
+.iv-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Topbar */
+.iv-topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.iv-info, .iv-counter, .iv-close {
+  pointer-events: auto;
+}
+
+.iv-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.iv-title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.iv-meta {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.iv-counter {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-top: 4px;
+}
+
+.iv-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+  backdrop-filter: blur(4px);
+}
+
+.iv-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Main Image Area */
+.iv-image-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  touch-action: none;
+}
+
+.iv-image {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Nav Arrows */
+.iv-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+.iv-arrow:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.iv-arrow-left { left: 24px; padding-bottom: 4px; padding-right: 4px; }
+.iv-arrow-right { right: 24px; padding-bottom: 4px; padding-left: 4px; }
+
+/* Bottom Toolbar */
+.iv-toolbar {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(20, 18, 24, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.iv-tool-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.iv-tool-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.iv-zoom-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-width: 44px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .iv-arrow {
+    display: none; /* Swipe will replace these on mobile */
+  }
+}

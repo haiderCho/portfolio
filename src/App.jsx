@@ -12,13 +12,21 @@ import TechStack from './pages/TechStack';
 const pages = ['About', 'Resume', 'Tech Stack', 'Portfolio', 'Blog', 'Contact', 'Gallery'];
 
 export default function App() {
-  const [activePage, setActivePage] = useState('About');
+  const [activePage, setActivePage] = useState(() => 
+    window.innerWidth <= 768 ? 'Profile' : 'About'
+  );
 
   useEffect(() => {
-    if (window.innerWidth <= 768) {
-      setActivePage('Profile');
-    }
-  }, []);
+    const handleResize = () => {
+      // Sync state when crossing the mobile/desktop boundary
+      if (window.innerWidth > 768 && activePage === 'Profile') {
+        setActivePage('About');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [activePage]);
 
 
   const renderPage = () => {

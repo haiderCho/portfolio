@@ -1,6 +1,26 @@
+import React, { useState, useEffect } from 'react';
 import { contactInfo } from '../data/contactInfo';
 
 export default function Sidebar() {
+  const [localTime, setLocalTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const options = {
+        timeZone: 'Asia/Dhaka',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+      };
+      setLocalTime(now.toLocaleTimeString('en-US', options));
+    };
+
+    updateTime();
+    const timer = setInterval(updateTime, 10000); // Update every 10 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <aside className="sidebar">
       <img
@@ -11,9 +31,19 @@ export default function Sidebar() {
       <h1 className="sidebar-name">{contactInfo.name}</h1>
       <span className="sidebar-title">{contactInfo.title}</span>
 
-      <div className="sidebar-status">
-        <span className="status-dot"></span>
-        <span className="status-text">Building @ {contactInfo.company}</span>
+      <div className="sidebar-status-container">
+        <div className="sidebar-status">
+          <span className="status-dot"></span>
+          <span className="status-text">Building @ {contactInfo.company}</span>
+        </div>
+        
+        <div className="sidebar-time">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="time-icon">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <span className="time-value">{localTime} Dhaka, BD</span>
+        </div>
       </div>
 
       <hr className="sidebar-divider" />
