@@ -1,6 +1,4 @@
-import { techStack, workspaceInfo } from '../data/techStack';
-import { FaDesktop, FaMemory, FaWindows } from 'react-icons/fa';
-import { SiIntel, SiNvidia } from 'react-icons/si';
+import { techStack } from '../data/techStack';
 
 const proficiencyClass = (level) => {
   switch (level) {
@@ -66,47 +64,6 @@ export default function TechStack() {
             </div>
           </section>
         ))}
-
-        {/* Workspace Section */}
-        <section className="ts-workspace">
-          <div className="ts-section-header">
-            <FaDesktop className="ts-workspace-icon" />
-            <div className="ts-section-text">
-              <h3 className="ts-section-title">Current Workspace</h3>
-              <p className="ts-section-desc">Primary development environment specs.</p>
-            </div>
-          </div>
-          <div className="workspace-grid">
-            <div className="workspace-item">
-              <FaWindows />
-              <div className="workspace-item-info">
-                <span className="workspace-item-label">Operating System</span>
-                <span className="workspace-item-value">{workspaceInfo.os}</span>
-              </div>
-            </div>
-            <div className="workspace-item">
-              <SiIntel />
-              <div className="workspace-item-info">
-                <span className="workspace-item-label">Processor</span>
-                <span className="workspace-item-value">{workspaceInfo.cpu}</span>
-              </div>
-            </div>
-            <div className="workspace-item">
-              <FaMemory />
-              <div className="workspace-item-info">
-                <span className="workspace-item-label">Memory</span>
-                <span className="workspace-item-value">{workspaceInfo.ram}</span>
-              </div>
-            </div>
-            <div className="workspace-item">
-              <SiNvidia />
-              <div className="workspace-item-info">
-                <span className="workspace-item-label">Graphics Card</span>
-                <span className="workspace-item-value">{workspaceInfo.gpu}</span>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );
