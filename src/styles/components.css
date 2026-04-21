@@ -85,8 +85,8 @@
   left: 6px;
   top: 8px;
   bottom: 8px;
-  width: 1px;
-  background: var(--surface-border);
+  width: 2px;
+  background: var(--text);
 }
 
 .timeline-item {
@@ -100,13 +100,11 @@
 
 .timeline-dot {
   position: absolute;
-  left: -24px;
+  left: -26px;
   top: 6px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--primary);
-  border: 2px solid var(--surface);
+  width: 12px;
+  height: 12px;
+  background: var(--text);
 }
 
 .timeline-title {
@@ -121,8 +119,11 @@
 
 .timeline-date {
   font-size: 13px;
-  color: var(--accent);
+  font-weight: 700;
+  color: var(--text);
   margin: 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .timeline-desc {

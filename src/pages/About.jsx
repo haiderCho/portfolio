@@ -36,17 +36,17 @@ export default function About() {
       {/* Sleek Highlight Ribbon */}
       <div className="highlight-ribbon">
         <div className="ribbon-item" style={{ animationDelay: '100ms' }}>
-          <span className="ribbon-value primary-gradient">+{yearsExp}</span>
+          <span className="ribbon-value">+{yearsExp}</span>
           <span className="ribbon-label">Years Experience</span>
         </div>
         <div className="ribbon-divider" />
         <div className="ribbon-item" style={{ animationDelay: '200ms' }}>
-          <span className="ribbon-value secondary-gradient">+6</span>
+          <span className="ribbon-value">+6</span>
           <span className="ribbon-label">Systems Shipped</span>
         </div>
         <div className="ribbon-divider" />
         <div className="ribbon-item" style={{ animationDelay: '300ms' }}>
-          <span className="ribbon-value accent-gradient">BSc</span>
+          <span className="ribbon-value">BSc</span>
           <span className="ribbon-label">Computer Science & Eng.</span>
         </div>
       </div>
@@ -67,7 +67,7 @@ export default function About() {
       />
 
       <p className="section-subtitle">
-        Convictions shaped by both research and production experience with enough on-call time to consistently prioritize resilience over hype.      
+        How I think about building systems.
       </p>
       
       <div className="principles-grid">
@@ -128,7 +128,7 @@ export default function About() {
       />
 
       <p className="section-subtitle">
-        The hardware stack powering local inference and aggressive prototyping. Because waiting on cloud compute to test a hypothesis is a waste of time.
+        What I build on.
       </p>
 
       <div className="workspace-grid">
@@ -177,7 +177,7 @@ export default function About() {
       />
 
       <p className="section-subtitle">
-        Active research areas. Stress-testing new paradigms to see if they hold up outside of toy examples and vendor benchmarks.
+        What I'm digging into right now.
       </p>
 
       <div className="trajectory-grid">
@@ -212,7 +212,7 @@ export default function About() {
       />
 
       <p className="section-subtitle">
-        Off the clock. The stories, music, and hardware tangents that keep me balanced when the laptop is finally closed.
+        What I do when I'm not coding.
       </p>
 
       <div className="hobbies-grid">

@@ -5,16 +5,16 @@ import SectionHeading from '../components/SectionHeading';
 export default function Resume() {
   return (
     <div className="page">
-      <h2 className="page-title">Career Snapshot</h2>
+      <h2 className="page-title brutalist-title">Career Snapshot</h2>
       <div className="page-underline" />
 
       {/* Experience */}
       <SectionHeading 
         title="Experience" 
         icon={
-          <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-            <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+          <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" width="24" height="24" fill="none" stroke="currentColor">
+            <rect x="2" y="7" width="20" height="14" />
+            <path d="M16 7V5h-8v2" />
           </svg>
         }
       />
@@ -24,8 +24,8 @@ export default function Resume() {
           <div key={idx} className="timeline-item">
             <div className="timeline-dot" />
             <div className="timeline-title">{job.title}</div>
-            <div className="timeline-company">{job.company}{job.type ? ` · ${job.type}` : ''}</div>
-            <div className="timeline-date">{job.date}</div>
+            <div className="timeline-company" style={{ color: 'var(--text)', fontWeight: 600 }}>{job.company}{job.type ? ` · ${job.type}` : ''}</div>
+            <div className="timeline-date" style={{ color: 'var(--text-secondary)' }}>{job.date}</div>
             <div className="timeline-desc">{job.description}</div>
           </div>
         ))}
@@ -36,9 +36,9 @@ export default function Resume() {
         title="Education" 
         style={{ marginTop: 36 }}
         icon={
-          <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+          <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" width="24" height="24" fill="none" stroke="currentColor">
             <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-            <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
+            <path d="M6 12v5l6 3 6-3v-5" />
           </svg>
         }
       />
@@ -48,7 +48,7 @@ export default function Resume() {
           <div key={idx} className="timeline-item">
             <div className="timeline-dot" />
             <div className="timeline-title">{edu.title}</div>
-            <div className="timeline-company">{edu.company}</div>
+            <div className="timeline-company" style={{ color: 'var(--text)', fontWeight: 600 }}>{edu.company}</div>
           </div>
         ))}
       </div>
@@ -61,7 +61,7 @@ export default function Resume() {
             title="Technical Mastery" 
             style={{ marginBottom: 20 }}
             icon={
-              <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+              <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" width="24" height="24" fill="none" stroke="currentColor">
                 <polyline points="16 18 22 12 16 6" />
                 <polyline points="8 6 2 12 8 18" />
               </svg>
@@ -78,10 +78,10 @@ export default function Resume() {
             title="Language Proficiency" 
             style={{ marginBottom: 20 }}
             icon={
-              <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
-                <circle cx="12" cy="12" r="10" />
+              <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter" width="24" height="24" fill="none" stroke="currentColor">
+                <rect x="2" y="2" width="20" height="20" />
                 <line x1="2" y1="12" x2="22" y2="12" />
-                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                <line x1="12" y1="2" x2="12" y2="22" />
               </svg>
             }
           />
@@ -101,11 +101,11 @@ function SkillBar({ name, percent }) {
   return (
     <div className="skill-item" style={{ marginBottom: 16 }}>
       <div className="skill-header" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-        <span className="skill-name" style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)' }}>{name}</span>
-        <span className="skill-percent" style={{ fontSize: 12, color: 'var(--text-secondary)' }}>{percent}%</span>
+        <span className="skill-name" style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)', textTransform: 'uppercase', letterSpacing: '1px' }}>{name}</span>
+        <span className="skill-percent" style={{ fontSize: 12, fontWeight: 700, color: 'var(--text)' }}>{percent}%</span>
       </div>
-      <div className="skill-bar" style={{ height: 6, background: 'rgba(255, 255, 255, 0.05)', borderRadius: 3, overflow: 'hidden' }}>
-        <div className="skill-fill" style={{ width: `${percent}%`, height: '100%', background: 'var(--primary)', boxShadow: '0 0 10px var(--primary-low-alpha)' }} />
+      <div className="skill-bar" style={{ height: 10, border: '1px solid var(--text)', background: 'transparent' }}>
+        <div className="skill-fill" style={{ width: `${percent}%`, height: '100%', background: 'var(--text)' }} />
       </div>
     </div>
   );
@@ -113,18 +113,18 @@ function SkillBar({ name, percent }) {
 
 function LanguageItem({ language, level, percent }) {
   return (
-    <div className="language-item" style={{ padding: '12px 16px', background: 'rgba(255, 255, 255, 0.02)', border: '1px solid var(--surface-border)', borderRadius: 12 }}>
+    <div className="language-item" style={{ padding: '12px 16px', background: 'var(--bg)', border: '1px solid var(--text)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--text)' }}>{language}</div>
-          <div style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: 2 }}>{level}</div>
+          <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--text)', textTransform: 'uppercase', letterSpacing: '1px' }}>{language}</div>
+          <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text)', marginTop: 2, textTransform: 'uppercase' }}>{level}</div>
         </div>
         <div className="lang-indicator" style={{ position: 'relative', width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg style={{ transform: 'rotate(-90deg)', width: 36, height: 36 }}>
-            <circle cx="18" cy="18" r="16" fill="transparent" stroke="rgba(255,255,255,0.05)" strokeWidth="3" />
-            <circle cx="18" cy="18" r="16" fill="transparent" stroke="var(--accent)" strokeWidth="3" strokeDasharray={100} strokeDashoffset={100 - percent} />
+          <svg style={{ width: 36, height: 36 }}>
+            <rect x="2" y="2" width="32" height="32" fill="transparent" stroke="var(--surface-border)" strokeWidth="1" />
+            <rect x="2" width="32" fill="var(--text)" height={`${(percent / 100) * 32}px`} y={`${34 - (percent / 100) * 32}`} stroke="none" />
           </svg>
-          <span style={{ position: 'absolute', fontSize: 9, fontWeight: 700, color: 'var(--text)' }}>{percent}%</span>
+          <span style={{ position: 'absolute', fontSize: 10, fontWeight: 800, color: percent > 50 ? 'var(--bg)' : 'var(--text)' }}>{percent}</span>
         </div>
       </div>
     </div>
