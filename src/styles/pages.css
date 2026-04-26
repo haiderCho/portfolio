@@ -46,8 +46,8 @@
 
 .fragment-image-container {
   width: 65%;
-  border: 1px solid var(--text);
-  border-radius: 4px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   background: #000;
   position: relative;
   overflow: hidden;
@@ -81,12 +81,13 @@
 .fragment-info-block {
   width: 45%;
   background: var(--bg);
-  border: 1px solid var(--text);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   padding: 30px;
   position: relative;
   z-index: 2;
   margin-left: -10%;
-  box-shadow: 8px 8px 0px var(--text);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
   transition: box-shadow 300ms ease, transform 300ms ease;
@@ -95,24 +96,24 @@
 .fragment-card:nth-child(even) .fragment-info-block {
   margin-left: 0;
   margin-right: -10%;
-  box-shadow: -8px 8px 0px var(--text);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
 
 .fragment-card:hover .fragment-info-block {
-  box-shadow: 12px 12px 0px #ff4500;
+  box-shadow: 0 8px 24px rgba(255, 158, 100, 0.25);
   transform: translate(-4px, -4px);
 }
 
 .fragment-card:nth-child(even):hover .fragment-info-block {
-  box-shadow: -12px 12px 0px #ff4500;
+  box-shadow: 0 8px 24px rgba(255, 158, 100, 0.25);
   transform: translate(4px, -4px);
 }
 
 .fragment-title-box {
-  background: #ff4500;
+  background: var(--accent);
   color: #000;
   padding: 12px 20px;
-  border: 1px solid #000;
+  border-radius: var(--radius);
   align-self: flex-start;
   margin-top: -50px;
   margin-bottom: 24px;
@@ -161,7 +162,8 @@
 .fragment-tag {
   font-size: 10px;
   font-weight: 700;
-  border: 1px solid var(--text);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   padding: 4px 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -174,7 +176,7 @@
   align-items: center;
   gap: 4px;
   letter-spacing: 1px;
-  color: #ff4500;
+  color: var(--accent);
   text-transform: uppercase;
   transition: gap 200ms ease;
 }
@@ -192,15 +194,16 @@
 
 .blog-card {
   background: var(--bg);
-  border: 1px solid var(--text);
-  border-radius: 0;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   padding: 24px;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .blog-card:hover {
   transform: translate(-4px, -4px);
-  box-shadow: 6px 6px 0px var(--text);
+  box-shadow: 0 6px 20px rgba(157, 124, 216, 0.25);
+  border-color: var(--primary);
 }
 
 .blog-card-meta {
@@ -216,7 +219,7 @@
 }
 
 .blog-category {
-  color: var(--text);
+  color: var(--primary);
   font-weight: 800;
 }
 
@@ -242,7 +245,8 @@
 
 .blog-read-more {
   background: var(--bg);
-  border: 1px solid var(--text);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   color: var(--text);
   font-size: 13px;
   font-weight: 800;
@@ -253,7 +257,8 @@
 }
 
 .blog-read-more:hover {
-  background: var(--text);
+  background: var(--primary);
+  border-color: var(--primary);
   color: var(--bg);
 }
 
@@ -269,10 +274,10 @@
   align-items: center;
   gap: 8px;
   background: var(--bg);
-  border: 1px solid var(--text);
+  border: 1px solid var(--surface-border);
   color: var(--text);
   padding: 8px 16px;
-  border-radius: 0;
+  border-radius: var(--radius);
   font-size: 14px;
   font-weight: 800;
   text-transform: uppercase;
@@ -283,14 +288,15 @@
   z-index: 10;
   margin-bottom: -40px;
   margin-left: 0;
-  box-shadow: 4px 4px 0px var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .back-button:hover {
   color: var(--bg);
-  background: var(--text);
+  background: var(--accent);
+  border-color: var(--accent);
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px var(--text);
+  box-shadow: 0 6px 16px rgba(255, 158, 100, 0.3);
 }
 
 .full-post {
@@ -304,7 +310,7 @@
   margin-top: -36px;
   height: 320px;
   overflow: hidden;
-  border-bottom: 2px solid var(--text);
+  border-bottom: 1px solid var(--surface-border);
   margin-bottom: 32px;
 }
 
@@ -336,8 +342,8 @@
 
 .meta-item svg {
   color: var(--text);
-  stroke-linecap: square;
-  stroke-linejoin: miter;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .post-title {
@@ -360,11 +366,11 @@
   align-items: center;
   gap: 6px;
   font-size: 11px;
-  background: var(--bg);
-  border: 1px solid var(--text);
-  color: var(--text);
+  background: rgba(122, 162, 247, 0.1);
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
   padding: 4px 10px;
-  border-radius: 0;
+  border-radius: var(--radius);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 800;
@@ -398,7 +404,7 @@
     margin-left: 0;
     margin-right: 0;
     margin-top: -30px;
-    box-shadow: 6px 6px 0px var(--text);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   }
   
   .fragment-pos-1, .fragment-pos-2, .fragment-pos-3, .fragment-pos-4 {

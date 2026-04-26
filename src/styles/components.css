@@ -45,7 +45,7 @@
   top: 8px;
   bottom: 8px;
   width: 2px;
-  background: var(--text);
+  background: var(--surface-border);
 }
 
 .timeline-item {
@@ -63,7 +63,9 @@
   top: 6px;
   width: 12px;
   height: 12px;
-  background: var(--text);
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(157, 124, 216, 0.3);
 }
 
 .timeline-title {

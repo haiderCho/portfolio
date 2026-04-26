@@ -47,9 +47,9 @@
   font-weight: 800;
   color: var(--text);
   background: var(--bg);
-  border: 1px solid var(--text);
+  border: 1px solid var(--surface-border);
   padding: 3px 10px;
-  border-radius: 4px 0px 4px 0px;
+  border-radius: var(--radius);
   white-space: nowrap;
   margin-top: 2px;
   text-transform: uppercase;
@@ -68,12 +68,12 @@
 }
 
 .gallery-card {
-  border-radius: 0;
+  border-radius: var(--radius);
   overflow: hidden;
   position: relative;
   cursor: pointer;
   animation: galleryFadeIn 400ms ease both;
-  border: 1px solid var(--text);
+  border: 1px solid var(--surface-border);
   transition: transform 200ms ease, box-shadow 200ms ease;
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -81,7 +81,7 @@
 
 .gallery-card:hover {
   transform: translate(-4px, -4px);
-  box-shadow: 6px 6px 0px var(--text);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   z-index: 2;
 }
 

@@ -1,12 +1,12 @@
 /* About Page Styles */
 
 :root {
-  --b-yellow: #ffee00;
-  --b-orange: #ff5500;
-  --b-green: #00ff66;
-  --b-blue: #00ccff;
-  --b-pink: #ff0099;
-  --b-purple: #a179ff;
+  --b-yellow: #e0af68;
+  --b-orange: #ff9e64;
+  --b-green: #9ece6a;
+  --b-blue: #7dcfff;
+  --b-pink: #bb9af7;
+  --b-purple: #9d7cd8;
 }
 
 /* Section Subtitle */
@@ -20,13 +20,11 @@
   opacity: 0.9;
 }
 
-/* Force sharp SVG icons for Brutalism */
+/* Removed SVG stroke brutalism to allow natural icon curves */
 .principles-grid svg,
 .trajectory-grid svg,
 .hobbies-grid svg,
 .section-heading svg {
-  stroke-linecap: square !important;
-  stroke-linejoin: miter !important;
 }
 
 /* Principles Grid */
@@ -39,7 +37,8 @@
 
 .principle-card {
   background: var(--bg);
-  border: 1px solid var(--text);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -62,7 +61,7 @@
 .principle-card:nth-child(6) { --card-accent: var(--b-yellow); }
 
 .principle-card:hover {
-  box-shadow: 8px 8px 0px var(--card-accent);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   border-color: var(--card-accent);
 }
 
@@ -78,14 +77,14 @@
   height: 36px;
   background: var(--bg);
   color: var(--card-accent);
-  border-radius: 0;
+  border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   border: 1px solid var(--card-accent);
   flex-shrink: 0;
-  box-shadow: 2px 2px 0px var(--card-accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .principle-card:hover .principle-icon-wrapper {
@@ -119,10 +118,10 @@
   margin: 32px 0 40px;
   padding: 16px 32px;
   background: var(--bg);
-  border: 2px solid var(--text);
-  border-radius: 0px 8px 0px 8px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   position: relative;
-  box-shadow: 6px 6px 0px var(--text);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
   animation: pageReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
 }
@@ -165,8 +164,8 @@
 
 .trajectory-card {
   background: var(--bg);
-  border: 1px solid var(--text);
-  border-radius: 0;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   padding: 20px;
   position: relative;
   transition: all 200ms ease;
@@ -183,7 +182,7 @@
 .trajectory-card:nth-child(3) { --card-accent: var(--b-orange); }
 
 .trajectory-card:hover {
-  box-shadow: 8px 8px 0px var(--card-accent);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   border-color: var(--card-accent);
 }
 
@@ -192,7 +191,7 @@
   height: 36px;
   background: var(--bg);
   color: var(--card-accent);
-  border-radius: 0;
+  border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,7 +199,7 @@
   font-size: 16px;
   border: 1px solid var(--card-accent);
   flex-shrink: 0;
-  box-shadow: 2px 2px 0px var(--card-accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .trajectory-card:hover .trajectory-icon-wrapper {
@@ -236,8 +235,8 @@
 
 .hobby-card {
   background: var(--bg);
-  border: 1px solid var(--text);
-  border-radius: 2px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -258,7 +257,7 @@
 .hobby-card:nth-child(6) { --card-accent: var(--b-orange); }
 
 .hobby-card:hover {
-  box-shadow: 8px 8px 0px var(--card-accent);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   border-color: var(--card-accent);
 }
 
@@ -267,14 +266,14 @@
   height: 36px;
   background: var(--bg);
   color: var(--card-accent);
-  border-radius: 0;
+  border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0;
   font-size: 16px;
   border: 1px solid var(--card-accent);
-  box-shadow: 2px 2px 0px var(--card-accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .hobby-card:hover .hobby-icon-wrapper {
@@ -313,15 +312,15 @@
   align-items: center;
   gap: 16px;
   padding: 16px;
-  border: 1px solid var(--text);
-  border-radius: 2px;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
   background: var(--bg);
   transition: all 200ms ease;
 }
 
 .workspace-item:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 4px 4px 0px var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .workspace-item svg {
@@ -365,7 +364,7 @@
 @media screen and (max-width: 650px) {
   .highlight-ribbon {
     flex-direction: column;
-    border-radius: 0;
+    border-radius: var(--radius);
     padding: 24px;
     gap: 16px;
   }

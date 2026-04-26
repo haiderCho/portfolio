@@ -28,7 +28,6 @@ button:active, a:active {
   background: var(--surface);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
-  border-top-right-radius: 0; /* Square this corner to perfectly connect with the rightmost tab */
   padding: 36px 32px;
   position: relative;
   z-index: 1;
